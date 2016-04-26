@@ -10,6 +10,14 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
+  <style type="text/css">
+  #div1{
+    width:500px;
+    height: 700px;
+    border:1px solid black;
+  }
+
+  </style>
  
 </head>
 <body>
@@ -24,6 +32,9 @@
 <!--<input type="submit" value="Continue"> -->
 </form>
 
+<div id="div1">
+
+</div> 
 </div>
 </div>
 </div>
@@ -52,8 +63,13 @@ $( "#myform" ).validate({
 
 $(document).ready(function(){
     $("button").click(function(){
-        $.ajax({url: "demo_test.txt", success: function(result){
-            $("#div1").html(result);
+        $.ajax({
+             url: "https://api.github.com/users/mralexgray", 
+             method:"GET",
+             dataType:"json",
+             success: function(result){
+             $("#div1").html(JSON.stringify(result,null,4));
+            console.log(JSON.stringify(result,null,4));
         }});
     });
 });
