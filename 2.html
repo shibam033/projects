@@ -1,0 +1,64 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>URL validate</title>
+<link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
+<!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+ 
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="well col-lg-12">
+<form id="myform">
+<label for="field">Please Enter URL: </label>
+<input class="left" id="field" name="field">
+<br/>
+<button> continue </button>
+<!--<input type="submit" value="Continue"> -->
+</form>
+
+</div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+
+<script>
+
+jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+$( "#myform" ).validate({
+  rules: {
+    field: {
+      required: true,
+      url: true
+    }
+  }
+});
+
+
+$(document).ready(function(){
+    $("button").click(function(){
+        $.ajax({url: "demo_test.txt", success: function(result){
+            $("#div1").html(result);
+        }});
+    });
+});
+</script>
+
+</body>
+
+</html>
